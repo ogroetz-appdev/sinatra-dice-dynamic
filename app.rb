@@ -45,3 +45,16 @@ get("/dice/5/4") do
 	
   erb(:five_four)
 end
+
+get("/dice/:dice/:sides") do
+
+  @dice = params.fetch("dice").to_i
+  @sides = params.fetch("sides").to_i
+  @rolls = []
+
+  @dice.times do 
+    @rolls.push(rand(1..@sides))
+  end
+
+  erb(:flexible)
+end
